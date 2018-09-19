@@ -12,15 +12,23 @@ try {
 	String databaseURL = "jdbc:postgresql://";
 	databaseURL += System.getenv("POSTGRESQL_SERVICE_HOST");
 	databaseURL += "/" + System.getenv("POSTGRESQL_DATABASE");
+	System.out.println("Database URL = "+databaseURL);
 	
 	String username = System.getenv("POSTGRESQL_USER");
+	System.out.println("Database username = "+username);
 	String password = System.getenv("PGPASSWORD");
+	System.out.println("Database password = "+password);
 	Connection connection = DriverManager.getConnection(databaseURL, username,password);
+	System.out.println("test1");
 	if (connection != null) {
 		String SQL = "select a.string AS first, b.string AS second, c.string AS noun from short_adjective a , long_adjective b, noun c ORDER BY random() limit 1";
+		System.out.println("test2");
 		Statement stmt = connection.createStatement();
+		System.out.println("test3");
 		ResultSet rs = stmt.executeQuery(SQL);
+		System.out.println("test4");
 		while (rs.next()) {
+			System.out.println("test5");
 			if (vowels.indexOf(rs.getString("first").charAt(0)) == -1) {
 				article = "a";
 			}
