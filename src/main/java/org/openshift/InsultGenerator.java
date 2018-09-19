@@ -9,7 +9,12 @@ String vowels = "AEIOU";
 String article = "an";
 String theInsult = "";
 try {
-	password = System.getenv("PGPASSWORD");
+	String databaseURL = "jdbc:postgresql://";
+	databaseURL += System.getenv("POSTGRESQL_SERVICE_HOST");
+	databaseURL += "/" + System.getenv("POSTGRESQL_DATABASE");
+	
+	String username = System.getenv("POSTGRESQL_USER");
+	String password = System.getenv("PGPASSWORD");
 	Connection connection = DriverManager.getConnection(databaseURL, username,password);
 	if (connection != null) {
 		String SQL = "select a.string AS first, b.string AS second, c.string AS noun
