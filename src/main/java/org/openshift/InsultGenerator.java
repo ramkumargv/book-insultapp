@@ -3,12 +3,22 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.Map;
+import java.util.Set;
+
 public class InsultGenerator {
 public String generateInsult() {
 String vowels = "AEIOU";
 String article = "an";
 String theInsult = "";
 try {
+	Map<String, String> my_map = System.getenv();
+		Set<String> keyset = my_map.keySet();
+		while(keyset.iterator().hasNext()){
+			String key = keyset.iterator().next();
+			System.out.println("Key = "+key);
+			System.out.println("Value = "+my_map.get(key));
+		}
 	String databaseURL = "jdbc:postgresql://";
 	databaseURL += System.getenv("POSTGRESQL_SERVICE_HOST");
 	System.out.println("Serivce Host ="+ System.getenv("POSTGRESQL_SERVICE_HOST"));
