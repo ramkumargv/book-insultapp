@@ -17,7 +17,7 @@ try {
 	
 	String username = System.getenv("POSTGRESQL_USER");
 	System.out.println("Database username = "+username);
-	String password = System.getenv("PGPASSWORD");
+	String password = System.getenv("POSTGRESQL_PASSWORD");
 	System.out.println("Database password = "+password);
 	Connection connection = DriverManager.getConnection(databaseURL, username,password);
 	System.out.println("test1");
